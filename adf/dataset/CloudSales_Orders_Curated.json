@@ -10,7 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "DVDSalesOrders.parquet",
 				"folderPath": "curated/CloudSales",
 				"fileSystem": "mdwoh"
 			},
