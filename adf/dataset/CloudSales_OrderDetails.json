@@ -1,0 +1,60 @@
+{
+	"name": "CloudSales_OrderDetails",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "mdwohwe01",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TransformationSource"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "dbo.OrderDetails",
+				"folderPath": "raw/CloudSales/dbo",
+				"fileSystem": "mdwoh"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "OrderDetailID",
+				"type": "String"
+			},
+			{
+				"name": "OrderID",
+				"type": "String"
+			},
+			{
+				"name": "MovieID",
+				"type": "String"
+			},
+			{
+				"name": "Quantity",
+				"type": "String"
+			},
+			{
+				"name": "UnitCost",
+				"type": "String"
+			},
+			{
+				"name": "LineNumber",
+				"type": "String"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "String"
+			},
+			{
+				"name": "UpdatedDate",
+				"type": "String"
+			}
+		]
+	}
+}

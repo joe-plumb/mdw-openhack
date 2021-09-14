@@ -1,0 +1,48 @@
+{
+	"name": "CloudSales",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "CloudSales_Orders",
+						"type": "DatasetReference"
+					},
+					"name": "CloudSalesOrders"
+				},
+				{
+					"dataset": {
+						"referenceName": "CloudSales_OrderDetails",
+						"type": "DatasetReference"
+					},
+					"name": "CloudSalesOrderDetails"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "CloudSales_Orders_Curated",
+						"type": "DatasetReference"
+					},
+					"name": "Sink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "DateTypes"
+				},
+				{
+					"name": "Join1"
+				},
+				{
+					"name": "Select1"
+				},
+				{
+					"name": "AddSourceSystemId"
+				}
+			],
+			"script": "parameters{\n\tSourceSystem as string (\"CloudSales\")\n}\nsource(output(\n\t\tOrderID as string,\n\t\tCustomerID as string,\n\t\tOrderDate as date,\n\t\tShipDate as date,\n\t\tTotalCost as double,\n\t\tCreatedDate as date,\n\t\tUpdatedDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> CloudSalesOrders\nsource(output(\n\t\tOrderDetailID as string,\n\t\tOrderID as string,\n\t\tMovieID as string,\n\t\tQuantity as integer,\n\t\tUnitCost as float,\n\t\tLineNumber as integer,\n\t\tCreatedDate as timestamp 'yyyy-MM-dd\\' \\'HH:mm:ss.SSS',\n\t\tUpdatedDate as timestamp 'yyyy-MM-dd\\' \\'HH:mm:ss.SSS'\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdateFormats: ['yyyy/MM/dd'],\n\ttimestampFormats: ['yyyy-MM-dd\\'T\\'HH:mm:ss.SSS\\'Z\\''],\n\tpreferredIntegralType: 'integer',\n\tpreferredFractionalType: 'float',\n\tbooleanFormat: ['1', '0']) ~> CloudSalesOrderDetails\nCloudSalesOrderDetails derive(CreatedDate = toDate(CreatedDate),\n\t\tUpdatedDate = toDate(UpdatedDate)) ~> DateTypes\nCloudSalesOrders, DateTypes join(CloudSalesOrders@OrderID == CloudSalesOrderDetails@OrderID,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> Join1\nJoin1 select(mapColumn(\n\t\tOrderID = CloudSalesOrders@OrderID,\n\t\tOrderDetailID,\n\t\tCustomerID,\n\t\tOrderDate,\n\t\tShipDate,\n\t\tTotalCost,\n\t\tCreatedDate = CloudSalesOrders@CreatedDate,\n\t\tUpdatedDate = CloudSalesOrders@UpdatedDate,\n\t\tOrderID = CloudSalesOrderDetails@OrderID,\n\t\tMovieID,\n\t\tQuantity,\n\t\tUnitCost,\n\t\tLineNumber,\n\t\tCreatedDate = DateTypes@CreatedDate,\n\t\tUpdatedDate = DateTypes@UpdatedDate\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select1\nSelect1 derive(SourceSystem = 1) ~> AddSourceSystemId\nAddSourceSystemId sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\ttruncate: true,\n\tumask: 0022,\n\tpreCommands: [],\n\tpostCommands: [],\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Sink"
+		}
+	}
+}

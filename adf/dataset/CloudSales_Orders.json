@@ -1,0 +1,56 @@
+{
+	"name": "CloudSales_Orders",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "mdwohwe01",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "TransformationSource"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "dbo.Orders",
+				"folderPath": "raw/CloudSales/dbo",
+				"fileSystem": "mdwoh"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "OrderID",
+				"type": "String"
+			},
+			{
+				"name": "CustomerID",
+				"type": "String"
+			},
+			{
+				"name": "OrderDate",
+				"type": "String"
+			},
+			{
+				"name": "ShipDate",
+				"type": "String"
+			},
+			{
+				"name": "TotalCost",
+				"type": "String"
+			},
+			{
+				"name": "CreatedDate",
+				"type": "String"
+			},
+			{
+				"name": "UpdatedDate",
+				"type": "String"
+			}
+		]
+	}
+}
