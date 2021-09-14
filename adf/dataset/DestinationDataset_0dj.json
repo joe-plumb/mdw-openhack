@@ -1,0 +1,23 @@
+{
+	"name": "DestinationDataset_0dj",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "mdwohwe01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "raw/movies",
+				"fileSystem": "mdwoh"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

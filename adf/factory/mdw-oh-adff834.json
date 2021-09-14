@@ -1,0 +1,9 @@
+{
+	"name": "mdw-oh-adff834",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "11094bb1-0b6b-4e9d-82a8-af895933fd63",
+		"tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+	}
+}
