@@ -1,0 +1,21 @@
+{
+	"name": "CloudSales_Orders_Curated",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "mdwohwe01",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "DVDSalesOrders.parquet",
+				"folderPath": "curated/CloudSales",
+				"fileSystem": "mdwoh"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}
