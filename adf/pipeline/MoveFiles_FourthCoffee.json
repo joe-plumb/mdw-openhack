@@ -183,6 +183,9 @@
 				"defaultValue": "raw/FourthCoffee/"
 			}
 		},
+		"folder": {
+			"name": "Extract"
+		},
 		"annotations": [],
 		"lastPublishTime": "2021-09-14T12:29:37Z"
 	},

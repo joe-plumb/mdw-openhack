@@ -10,6 +10,9 @@
 				"type": "String"
 			}
 		},
+		"folder": {
+			"name": "RawLoads"
+		},
 		"annotations": [],
 		"type": "AzureSqlTable",
 		"schema": [],

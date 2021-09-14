@@ -5,6 +5,9 @@
 			"referenceName": "mdwohwe01",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "RawLoads"
+		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
