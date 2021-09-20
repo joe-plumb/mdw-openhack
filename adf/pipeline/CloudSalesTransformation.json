@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "CloudSales",
+						"referenceName": "Southridge_DVDSales",
 						"type": "DataFlowReference",
 						"parameters": {
 							"SourceSystem": {
