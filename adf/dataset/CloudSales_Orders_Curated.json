@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "curated/DVDSalesOrders",
+				"folderPath": "cleansed/DVDSalesOrders",
 				"fileSystem": "mdwoh"
 			},
 			"compressionCodec": "snappy"
