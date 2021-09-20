@@ -5,6 +5,9 @@
 			"referenceName": "CosmosDb1",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "RawLoads"
+		},
 		"annotations": [],
 		"type": "CosmosDbSqlApiCollection",
 		"schema": {},

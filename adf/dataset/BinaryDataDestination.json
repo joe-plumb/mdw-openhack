@@ -17,6 +17,9 @@
 				"type": "string"
 			}
 		},
+		"folder": {
+			"name": "RawLoads"
+		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {

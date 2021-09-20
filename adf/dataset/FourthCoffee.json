@@ -5,6 +5,9 @@
 			"referenceName": "FileServer1",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "RawLoads"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {

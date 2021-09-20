@@ -1,26 +1,23 @@
 {
-	"name": "DestinationDataset_0dj",
+	"name": "CloudSales_Orders_Curated",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "mdwohwe01",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
-			"name": "RawLoads"
+			"name": "TransformationSink"
 		},
 		"annotations": [],
-		"type": "Json",
+		"type": "Parquet",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "raw/movies",
+				"folderPath": "curated/DVDSalesOrders",
 				"fileSystem": "mdwoh"
 			},
-			"columnDelimiter": ",",
-			"escapeChar": "\\",
-			"quoteChar": "\""
+			"compressionCodec": "snappy"
 		},
-		"schema": {}
-	},
-	"type": "Microsoft.DataFactory/factories/datasets"
+		"schema": []
+	}
 }

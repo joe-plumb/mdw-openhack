@@ -1,0 +1,47 @@
+{
+	"name": "CloudSalesTransformation",
+	"properties": {
+		"activities": [
+			{
+				"name": "CloudSalesTransformation",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "Southridge_DVDSales",
+						"type": "DataFlowReference",
+						"parameters": {
+							"SourceSystem": {
+								"value": "'@{pipeline().parameters.SourceSystem}'",
+								"type": "Expression"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"parameters": {
+			"SourceSystem": {
+				"type": "string",
+				"defaultValue": "southridge"
+			}
+		},
+		"folder": {
+			"name": "Transform"
+		},
+		"annotations": []
+	}
+}
