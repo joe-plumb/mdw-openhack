@@ -19,7 +19,10 @@
 						"referenceName": "CloudSales",
 						"type": "DataFlowReference",
 						"parameters": {
-							"SourceSystem": "\"CloudSales\""
+							"SourceSystem": {
+								"value": "'@{pipeline().parameters.SourceSystem}'",
+								"type": "Expression"
+							}
 						}
 					},
 					"compute": {
@@ -30,6 +33,12 @@
 				}
 			}
 		],
+		"parameters": {
+			"SourceSystem": {
+				"type": "string",
+				"defaultValue": "southridge"
+			}
+		},
 		"folder": {
 			"name": "Transform"
 		},
